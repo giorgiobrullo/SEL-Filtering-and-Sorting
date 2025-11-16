@@ -6,9 +6,9 @@
 Consider using my setup template as is if you:
 - Don't want to see too many results, but also don't want to miss out on any high quality streams that may be removed by simple filtering like `Exclude Uncached` or `Result Limits`
 - Want a config that will adjust its filtering strictness based on how many results are found. Dont want those old 480p cartoons filtered out? But don't want to see 720p streams when there are a bunch of 1080p & 4K present already? This setup got you covered. 
-- Prioritize certain streams and have sorted your results accordingly in `Filters` and `Sort Order` (Cached & Uncached), optionally with [Vidhin's regex patterns](https://github.com/Vidhin05/Releases-Regex/blob/main/README.md)
+- Have spent hours trying to prioritize certain streams and sort your results to your liking, maybe even with with [Vidhin's regex patterns](https://github.com/Vidhin05/Releases-Regex/blob/main/README.md), but now just want to use a complete setup done by someone that has spent many many more hours perfecting.
 
-Lastly, you can find my config for AIOMetadata at the end for all your metadata and catalog  management needs.
+Lastly, please do note my AIOStreams template *does not* include any catalogs. This is because many of us prefer AIOMetadata, so just scroll to the end of this page, you will find my config for AIOMetadata for all your metadata and catalog management needs.
 
 ---
 
