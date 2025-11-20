@@ -114,7 +114,12 @@ https://raw.githubusercontent.com/Tam-Taro/SEL-Filtering-and-Sorting/refs/heads/
 
   > [!NOTE]
   > Remember to personalize your imported config by going to `Filters` -> `Language`. Select your main language as the top spot in Preferred Languages, then sort/rank the rest according to your preference. I suggest keeping Dubbed, Dual Audio, Multi, Unknown in the list as they may contain streams of your preferred languages.
-> To further enhance your sorting and filtering, I highly recommend importing Vidhin's regex which tags streams based on the quality of the release group. Scroll down for more information.
+> To further enhance your sorting and filtering, I highly recommend importing Vidhin's regex which tags streams based on the quality of the release group.
+
+> How to Import Vidhin's regex: Filters → Regex → Preferred Regex Patterns → Import from url icon
+> ```https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-regexes.json```
+> 
+> This regex labels all streams with tier rankings based on reputation/quality of release groups per TRaSH Guides. You will need to reimport the regex occassionally whenever Vidhin pushes an update to the regex because many AIOStreams instances will only allow the use of his latest update regex.
 
 ## 🧩 Recommended Setup for Template v1.1.0 (Outdated )
 This is my recommended setup that should work for most of you. If you just want a finished template, then import & use one of the templates described above. Otherwise read on to customize your current AIOStreams instance.
