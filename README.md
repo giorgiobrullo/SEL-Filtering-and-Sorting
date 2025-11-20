@@ -157,7 +157,7 @@ https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-rege
 > [!IMPORTANT]
 > Leave all remainder filters setting, `Excluded` `Included` and `Required` boxes empty. As tempting as it sounds to select `Exclude Uncached` or set your `Result Limits`, my SEL will do that for you. This is the first troubleshooting step if your sort/filter looks off!
 
-## 🎚️🤖 Filtering with Stream Expression Language (SEL)
+## 🎚️🤖 Filtering with Stream Expression Language (SEL) for Template v1.1 (Outdated)
 
 - All filtering (besides title match and dedupe) can be done with stream expressions. My setup leaves the language filtering to AIOStreams basic language filter (altho can be done using SEL - just think the basic filter is good enough).
 - There are two schools of thought with regards to SEL Filtering:
@@ -169,16 +169,7 @@ https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-rege
         <summary>First line into ESE: Uncached Filter</summary>
   
     ```text
-  /*Uncached low-seeder filter (except usenet or good regex-matched uncached)*/
-  count(type(streams,'debrid','usenet')) > 0? 
-  ( count(type(cached(streams),'debrid','usenet')) < 10 ? [] :  merge(count(regexMatched(streams)) > 0 ? seeders(merge(regexMatched(negate(uncached(type(streams,'usenet')), uncached(streams)),'','Bad'), type(streams,'p2p')),0,10) : seeders(merge(negate(uncached(type(streams,'usenet')), uncached(streams)), type(streams,'p2p')),0,10),
-  /*Uncached resolution filter*/
-  count(resolution(cached(streams),'2160p','1440p')) > 10 ? resolution(uncached(streams),'720p','576p','480p','360p','240p','144p','Unknown') :  
-  count(resolution(cached(streams),'2160p','1440p','1080p')) > 10 ? slice(resolution(uncached(streams),'720p','576p','480p','360p','240p','144p','Unknown'), 5) : 
-  count(resolution(cached(streams),'2160p','1440p','1080p','720p')) > 10 ? slice(resolution(uncached(streams),'576p','480p','360p','240p','144p','Unknown'), 5) : [] ) ): 
-  /*P2P low-seeder filter*/	
-  count(type(streams,'p2p')) < 10 ? [] : 
-  count(seeders(type(streams,'p2p'), 50)) > 20? seeders(type(streams,'p2p'), 0,50) : count(seeders(type(streams,'p2p'),25)) > 20? seeders(type(streams,'p2p'), 0,25) : count(seeders(type(streams,'p2p'), 10)) > 10? seeders(type(streams,'p2p'),0,10) : count(seeders(type(streams,'p2p'), 1)) > 10? seeders(type(streams,'p2p'), 0,1) : []
+ 
      ```   
     </details>
   </p>
@@ -187,26 +178,6 @@ https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-rege
         <summary>Second line into ESE: Main Quality/Resolution Filter</summary>
   
     ```text
-  /*High quality & resolution filter*/
-  merge(count(resolution(quality(streams,'Bluray REMUX'),'2160p')) > 3 ? slice(resolution(quality(streams,'Bluray REMUX'),'2160p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Bluray REMUX'),'1440p','1080p')) > 3 ? slice(resolution(quality(streams,'Bluray REMUX'),'1440p','1080p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Bluray REMUX'),'720p')) > 3 ? slice(resolution(quality(streams,'Bluray REMUX'),'720p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Bluray'),'2160p')) > 3 ? slice(resolution(quality(streams,'Bluray'),'2160p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Bluray'),'1440p','1080p')) > 3 ? slice(resolution(quality(streams,'Bluray'),'1440p','1080p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Bluray'),'720p')) > 3 ? slice(resolution(quality(streams,'Bluray'),'720p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'WEB-DL'),'2160p')) > 3 ? slice(resolution(quality(streams,'WEB-DL'),'2160p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'WEB-DL'),'1440p','1080p')) > 3 ? slice(resolution(quality(streams,'WEB-DL'),'1440p','1080p'), 3) : [], 
-  count(resolution(quality(streams,'WEB-DL'),'720p')) > 3 ? slice(resolution(quality(streams,'WEB-DL'),'720p','Unknown'), 3) : [],
-  count(resolution(quality(streams,'WEBRip'),'2160p')) > 3 ? slice(resolution(quality(streams,'WEBRip'),'2160p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'WEBRip'),'1440p','1080p')) > 3 ? slice(resolution(quality(streams,'WEBRip'),'1440p','1080p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'WEBRip'),'720p')) > 3 ?  slice(resolution(quality(streams,'WEBRip'),'720p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'HDRip','HC HD-Rip','DVDRip','HDTV'),'1080p')) > 3 ? slice(resolution(quality(streams,'HDRip','HC HD-Rip','DVDRip','HDTV'),'1080p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'HDRip','HC HD-Rip','DVDRip','HDTV'),'720p')) > 3 ? slice(resolution(quality(streams,'HDRip','HC HD-Rip','DVDRip','HDTV'),'720p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Unknown'),'2160p')) > 3 ? slice(resolution(quality(streams,'Unknown'),'2160p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Unknown'),'1440p','1080p')) > 3 ? slice(resolution(quality(streams,'Unknown'),'1440p','1080p','Unknown'), 3) : [], 
-  count(resolution(quality(streams,'Unknown'),'720p')) > 3 ? slice(resolution(quality(streams,'Unknown'),'720p','Unknown'), 3) : [] )
-
-        )
     ```
     </details>
   </p>
@@ -215,14 +186,6 @@ https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-rege
         <summary>Third line into ESE: Low Quality/Resolution Filter</summary>
   
     ```text
-  /*Low quality, resoution & "Bad" regex filter*/
-  merge(count(quality(streams,'Bluray REMUX','Bluray','WEB-DL','WEBRip')) > 10 ? quality(streams,'HDRip','HC HD-Rip','DVDRip','HDTV','CAM','TS','TC','SCR','Unknown'):
-  count(quality(streams,'Bluray REMUX','Bluray','WEB-DL','WEBRip','HDRip','HC HD-Rip','DVDRip','HDTV')) > 10 ? quality(streams,'CAM','TS','TC','SCR','Unknown') : [], 
-  count(resolution(streams,'2160p','1440p','1080p')) > 9 ? resolution(streams,'720p','576p','480p','360p','240p','144p','Unknown'):
-  count(resolution(streams,'2160p','1440p','1080p')) > 4 ? slice(resolution(streams,'720p','576p','480p','360p','240p','144p','Unknown'),5):  
-  count(resolution(streams,'2160p','1440p','1080p','720p')) > 9 ? resolution(streams,'576p','480p','360p','240p','144p','Unknown') : 
-  count(resolution(streams,'2160p','1440p','1080p','720p')) > 4 ? slice(resolution(streams,'720p','576p','480p','360p','240p','144p','Unknown'),5) : [],
-  count(negate(regexMatched(streams,'Bad'), regexMatched(streams))) > 4 ? regexMatched(streams,'Bad') : [] )
 
     ```
     </details>
