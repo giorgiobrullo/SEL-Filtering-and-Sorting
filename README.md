@@ -216,6 +216,9 @@ Third block of ESE is the Low Quality/Resolution Filter. It checks how many stre
 ## ⚙️ What’s Included for AIOMetadata
 These are setup configs to use with AIOMetadata. It is a powerful tool for all things metadata and catalogs. If you're not sure where to start, pick a AIOMetadata instance from [the list of trusted public instances](https://status.dinsden.top/status/stremio-addons) or use the [Elfhosted instance](https://aiometadata.elfhosted.com/configure/). You can't go wrong with either choice.
 
+ > [!NOTE]
+ > My previous AIOStreams template does not include any catalogs. This is where AIOMetadata comes in. It is a separate addon from AIOStreams, installed directly into stremio (or via StremThru Side Kick), and is the main place most of us like to keep our catalogs for stremio!
+
 | Complete config | Description |Download|
 |-----------|--------------|---|
 | **With Anime Catalogs** | Complete configuration with anime metadata preset, tv, movies and anime catalogs. Huge props to Cedya, Snoak & Mr Professor for their awesome lists!|[Direct Link](https://raw.githubusercontent.com/Tam-Taro/SEL-Filtering-and-Sorting/refs/heads/main/AIOMetadata%20Configs/AIOMetadata-config-with-anime.json)|
