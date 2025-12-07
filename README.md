@@ -10,6 +10,15 @@ Consider using my setup template as is if you:
 
 Lastly, please do note my AIOStreams template *does not* include any catalogs. This is because many of us prefer AIOMetadata (separate addon from AIOStreams), so just scroll to the end of this page, you will find my config for AIOMetadata for all your metadata and catalog management needs.
 
+
+  <details>
+        <summary>PS. I just switched to TorBox on the Bf deal so now I can finally share my referral code like everyone else woo!!</summary></summary>
+  
+    f1cdd3f8-aeee-48f1-849b-64fc7e5aeb3c
+  > Enter that into your sub page, or use [this link](https://torbox.app/subscription?referral=f1cdd3f8-aeee-48f1-849b-64fc7e5aeb3c). You & I get +84 days on a yearly sub if it's your TorBox account's first ever purchase.
+    
+  </details>
+
 ---
 ## ✨ Changes to template from v1.1 to v1.2
 
@@ -206,6 +215,9 @@ Third block of ESE is the Low Quality/Resolution Filter. It checks how many stre
 
 ## ⚙️ What’s Included for AIOMetadata
 These are setup configs to use with AIOMetadata. It is a powerful tool for all things metadata and catalogs. If you're not sure where to start, pick a AIOMetadata instance from [the list of trusted public instances](https://status.dinsden.top/status/stremio-addons) or use the [Elfhosted instance](https://aiometadata.elfhosted.com/configure/). You can't go wrong with either choice.
+
+ > [!NOTE]
+ > My previous AIOStreams template does not include any catalogs. This is where AIOMetadata comes in. It is a separate addon from AIOStreams, installed directly into stremio (or via StremThru Side Kick), and is the main place most of us like to keep our catalogs for stremio!
 
 | Complete config | Description |Download|
 |-----------|--------------|---|
