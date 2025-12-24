@@ -5,7 +5,7 @@
     "description": "Fully configured setup based on Tamtaro's recommended filters, sort orders, and Standard SEL described [here](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting). Designed for those with debrid or usenet services, while seeking the highest quality results, minimal clutter, and complete coverage even when options are few. \n\n * **Comes with no addons, so using this template will not affect your addons page** \n * For catalogs, check out my github for AIOMetadata configs\n * **ⓘ Review the Language filter**: Add your main languages to Preferred Languages, adjust ranking accordingly. \n * I recommend importing [Vidhin's regex](https://github.com/Vidhin05/Releases-Regex/tree/main?tab=readme-ov-file#-raw-github-links-for-direct-import) into *Preferred Regex Patterns* to highlight streams from reputable release groups.",
     "source": "external",
     "author": "Tamtaro",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "category": "Debrid",
     "serviceRequired": false
   },
@@ -13,8 +13,8 @@
     "formatter": {
       "id": "custom",
       "definition": {
-        "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','  4K ')::replace('1440p','    2K ')::replace('1080p','1080P')::replace('720p','720P')::replace('576p','576P')::replace('540p','540P')::replace('480p','480P')::replace('360p','360P')::replace('240p','240P')::replace('144p','144P')}\"||\"    ⍰ \"]} {stream.type::replace('debrid','   ')::replace('p2p','⁽ᵖ²ᵖ⁾')::replace('live','⁽ˡᶦᵛᵉ⁾')::replace('http','⁽ʷᵉᵇ⁾')::replace('usenet','⁽ⁿᶻᵇ⁾')::replace('statistic','⁽ˢᵗᵃᵗˢ⁾')::replace('external','⁽ᵉˣᵗ⁾')::replace('error','⁽ᵉʳʳᵒʳ⁾')::replace('youtube','⁽ʸᵗ⁾')}{service.cached::istrue[\"⚡\"||\"\"]}{service.cached::isfalse[\"⏳\"||\"\"]}{tools.newLine}{stream.quality::exists[\"     \\n〈{stream.quality::title}〉 \"||\"\"]}{stream.message::~Download[\"{tools.removeLine}\\n‎ \"||\"\"]}",
-        "description": "{stream.title::exists::and::stream.library::isfalse[\"▤  {stream.title::truncate(20)}\"||\"\"]}{stream.title::exists::and::stream.library::istrue[\"☁︎  {stream.title::truncate(20)} \"||\"\"]}{stream.year::exists[\" ({stream.year}) \"||\"\"]}{stream.seasonEpisode::exists[\" {stream.seasonEpisode::join(' · ')}\"||\"\"]}\n{stream.encode::exists[\"▣  {stream.encode}  \"||\"\"]}{stream.visualTags::exists[\"✧  {stream.visualTags::join(' · ')}  \"||\"\"]}\n{stream.audioTags::exists[\"♬  {stream.audioTags::join(' · ')}  \"||\"\"]}{stream.audioChannels::exists[\"☊  {stream.audioChannels::join(' · ')} \"||\"\"]}\n{stream.seasonPack::istrue::and::stream.size::>0[\"⧉  \"||\"\"]}{stream.seasonPack::isfalse::and::stream.size::>0[\"◧  \"||\"\"]}{stream.size::>0[\"{stream.size::bytes} \"||\"\"]}{stream.folderSize::>0[\"/ {stream.folderSize::rbytes}\"||\"\"]}{service.cached::isfalse::or::stream.type::=p2p::and::stream.seeders::>0[\" ⇋ {stream.seeders}𖧧\"||\"\"]}{stream.age::exists[\" · ⟳ {stream.age} \"||\"\"]}{stream.uLanguages::exists[\" · ⚐ {stream.uSmallLanguageCodes::join(' · ')::replace('ᴅᴜᴀʟ ᴀᴜᴅɪᴏ','ᴅᴜᴏ')::replace('ᴅᴜʙʙᴇᴅ','ᴅᴜʙ')}\"||\"\"]}\n{stream.proxied::istrue[\"⛊  \"||\"⛉  \"]}{service.shortName::exists[\"[{service.shortName}] \"||\"\"]}{addon.name}{stream.releaseGroup::exists[\" · {stream.releaseGroup::truncate(13)}\"||\"\"]}{stream.indexer::exists::and::stream.type::=usenet[\" · {stream.indexer}\"||\"\"]}{stream.message::~Download[\"{tools.removeLine}\\n\"||\"\"]}\n{stream.edition::exists::and::stream.visualTags::~IMAX::isfalse::or::stream.regexMatched::exists::or::stream.network::exists::or::stream.message::exists::or::stream.upscaled::istrue::or::stream.repack::istrue::or::stream.uncensored::istrue::or::stream.unrated::istrue[\"✎.\"||\"\"]}{stream.regexMatched::exists[\".{stream.regexMatched::Title::replace('Bad','Bad Release Group')}.\"||\"\"]}{stream.network::exists[\".{stream.network}.\"||\"\"]}{stream.upscaled::istrue[\".Upscaled.\"||\"\"]}{stream.remastered::istrue::and::stream.edition::~Remastered::isfalse[\".Remastered.\"||\"\"]}{stream.uncensored::istrue[\".Uncensored.\"||\"\"]}{stream.repack::istrue[\".Repacked.\"||\"\"]}{stream.unrated::istrue[\".Unrated.\"||\"\"]}{stream.message::exists[\".{stream.message}. \"||\"\"]}{stream.edition::exists::and::stream.visualTags::~IMAX::isfalse[\".‹{stream.edition::replace('Theatrical','Theatrical Cut')}› \"||\"\"]}{stream.message::~Download[\"{tools.removeLine}\"||\"\"]}{stream.message::~Download[\"\\n{stream.message::replace('Download the stream above via your browser','⭳ Click to DL stream')} \"||\"\"]}"
+        "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','  4K ')::replace('1440p','    2K ')::replace('1080p','1080P')::replace('720p','720P')::replace('576p','576P')::replace('540p','540P')::replace('480p','480P')::replace('360p','360P')::replace('240p','240P')::replace('144p','144P')}\"||\"    ⍰ \"]} {stream.type::replace('debrid','   ')::replace('p2p','⁽ᵖ²ᵖ⁾')::replace('live','⁽ˡᶦᵛᵉ⁾')::replace('http','⁽ʷᵉᵇ⁾')::replace('usenet','⁽ⁿᶻᵇ⁾')::replace('stremio-usenet','⁽ⁿᶻᵇ⁾')::replace('statistic','⁽ˢᵗᵃᵗˢ⁾')::replace('external','⁽ᵉˣᵗ⁾')::replace('error','⁽ᵉʳʳᵒʳ⁾')::replace('youtube','⁽ʸᵗ⁾')}{service.cached::istrue[\"⚡\"||\"\"]}{service.cached::isfalse[\"⏳\"||\"\"]}{tools.newLine}{stream.quality::exists[\"  \\n〈{stream.quality::title::replace('Bluray Remux','Remux')}〉 \"||\"\"]}{stream.message::~Download[\"{tools.removeLine}\\n‎ \"||\"\"]}",
+        "description": "{stream.title::exists::and::stream.library::isfalse[\"▤  {stream.title::title::truncate(20)}\"||\"\"]}{stream.title::exists::and::stream.library::istrue[\"☁︎  {stream.title::title::truncate(20)} \"||\"\"]}{stream.year::exists[\" ({stream.year}) \"||\"\"]}{stream.seasonEpisode::exists[\" {stream.seasonEpisode::join(' · ')}\"||\"\"]}\n{stream.encode::exists[\"▣  {stream.encode}  \"||\"\"]}{stream.visualTags::exists[\"✧  {stream.visualTags::join(' · ')}  \"||\"\"]}\n{stream.audioTags::exists[\"♬  {stream.audioTags::join(' · ')}  \"||\"\"]}{stream.audioChannels::exists[\"☊  {stream.audioChannels::join(' · ')} \"||\"\"]}\n{stream.seasonPack::istrue::and::stream.size::>0[\"⧉  \"||\"\"]}{stream.seasonPack::isfalse::and::stream.size::>0[\"◧  \"||\"\"]}{stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.folderSize::>0[\"/ {stream.folderSize::rbytes}\"||\"\"]}{service.cached::isfalse::or::stream.type::=p2p::and::stream.seeders::>0[\" ⇋ {stream.seeders}𖧧\"||\"\"]}{stream.type::~usenet::and::stream.age::exists[\" · ⟳ {stream.age}\"||\"\"]}{stream.uLanguages::exists[\" · ⚐ {stream.uSmallLanguageCodes::join(' · ')::replace('ᴅᴜᴀʟ ᴀᴜᴅɪᴏ','ᴅᴜᴏ')::replace('ᴅᴜʙʙᴇᴅ','ᴅᴜʙ')}\"||\"\"]}\n{stream.proxied::istrue[\"⛊  \"||\"⛉  \"]}{service.shortName::exists[\"[{service.shortName}] \"||\"\"]}{addon.name}{stream.releaseGroup::exists[\" · {stream.releaseGroup::truncate(13)}\"||\"\"]}{stream.indexer::exists::and::stream.type::~usenet[\" · {stream.indexer}\"||\"\"]}{stream.message::~Download[\"{tools.removeLine}\\n\"||\"\"]}\n{stream.edition::exists::and::stream.visualTags::~IMAX::isfalse::or::stream.regexMatched::exists::stream.seadex::istrue::or::stream.seadexBest::istrue::or::stream.network::exists::or::stream.message::exists::or::stream.upscaled::istrue::or::stream.repack::istrue::or::stream.uncensored::istrue::or::stream.unrated::istrue[\"✎.\"||\"\"]}{stream.seadexBest::istrue[\".ʙᴇsᴛ ʀᴇʟᴇᴀsᴇ.\"||\"\"]}{stream.seadex::istrue::and::stream.seadexBest::isfalse[\".ᴀʟᴛ ʙᴇsᴛ ʀᴇʟᴇᴀsᴇ.\"||\"\"]}{stream.regexMatched::exists::and::stream.seadex::isfalse[\".{stream.regexMatched::replace('Anime BD T1','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟷')::replace('Anime BD T2','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟸')::replace('Anime BD T3','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟹')::replace('Anime BD T4','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟺')::replace('Anime BD T5','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟻')::replace('Anime BD T6','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟼')::replace('Anime BD T7','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟽')::replace('Anime BD T8','ᴀɴɪᴍᴇ ʙᴅ ᴛ𝟾')::replace('Remux T1','ʀᴇᴍᴜx ᴛ𝟷')::replace('Remux T2','ʀᴇᴍᴜx ᴛ𝟸')::replace('Remux T3','ʀᴇᴍᴜx ᴛ𝟹')::replace('Bluray T1','ʙʟᴜʀᴀʏ ᴛ𝟷')::replace('Bluray T2','ʙʟᴜʀᴀʏ ᴛ𝟸')::replace('Bluray T3','ʙʟᴜʀᴀʏ ᴛ𝟹')::replace('Anime Web T1','ᴀɴɪᴍᴇ ᴡᴇʙ ᴛ𝟷')::replace('Anime Web T2','ᴀɴɪᴍᴇ ᴡᴇʙ ᴛ𝟸')::replace('Anime Web T3','ᴀɴɪᴍᴇ ᴡᴇʙ ᴛ𝟹')::replace('Anime Web T4','ᴀɴɪᴍᴇ ᴡᴇʙ ᴛ𝟺')::replace('Anime Web T5','ᴀɴɪᴍᴇ ᴡᴇʙ ᴛ𝟻')::replace('Anime Web T6','ᴀɴɪᴍᴇ ᴡᴇʙ ᴛ𝟼')::replace('Web T1','ᴡᴇʙ ᴛ𝟷')::replace('Web T2','ᴡᴇʙ ᴛ𝟸')::replace('Web T3','ᴡᴇʙ ᴛ𝟹')::replace('Web Scene','ᴡᴇʙ sᴄᴇɴᴇ')::replace('Bad','ᴜɴʀᴇʟɪᴀʙʟᴇ')}.\"||\"\"]}{stream.network::exists[\".{stream.network::replace('Netflix','ɴᴇᴛғʟɪx')::replace('Disney','ᴅɪsɴᴇʏ')::replace('Apple TV','ᴀᴘᴘʟᴇ ᴛᴠ')::replace('Amazon','ᴀᴍᴀᴢᴏɴ')::replace('PBS','ᴘʙs')::replace('Nickelodeon','ɴɪᴄᴋᴇʟᴏᴅᴇᴏɴ')::replace('HBO','ʜʙᴏ')::replace('Hulu','ʜᴜʟᴜ')::replace('CBS','ᴄʙs')::replace('NBC','ɴʙᴄ')::replace('AMC','ᴀᴍᴄ')::replace('Crunchyroll','ᴄʀᴜɴᴄʜʏʀᴏʟʟ')::replace('VICE','ᴠɪᴄᴇ')::replace('Sony','sᴏɴʏ')::replace('Hallmark','ʜᴀʟʟᴍᴀʀᴋ')::replace('Adult Swim','ᴀᴅᴜʟᴛ sᴡɪᴍ')::replace('Animal Planet','ᴀɴɪᴍᴀʟ ᴘʟᴀɴᴇᴛ')::replace('Cartoon Network','ᴄᴀʀᴛᴏᴏɴ ɴᴇᴛᴡᴏʀᴋ')}.\"||\"\"]}{stream.upscaled::istrue[\".ᴜᴘsᴄᴀʟᴇᴅ.\"||\"\"]}{stream.remastered::istrue::and::stream.edition::~Remastered::isfalse[\".ʀᴇᴍᴀsᴛᴇʀᴇᴅ.\"||\"\"]}{stream.uncensored::istrue[\".ᴜɴᴄᴇɴsᴏʀᴇᴅ.\"||\"\"]}{stream.repack::istrue[\".ʀᴇᴘᴀᴄᴋᴇᴅ.\"||\"\"]}{stream.unrated::istrue[\".ᴜɴʀᴀᴛᴇᴅ.\"||\"\"]}{stream.message::exists[\".{stream.message::replace('NZB Health: ✅','☑ ɴᴢʙ')::replace('NZB Health: 🧝','☑ ᴇʟғ ɴᴢʙ')::replace('NZB Health: ⚠️','ᴜɴᴠᴇʀɪғɪᴇᴅ ɴᴢʙ')::replace('NZB Health: 🚫','☒ ɴᴢʙ')} \"||\"\"]}{stream.edition::exists::and::stream.visualTags::~IMAX::isfalse[\".{stream.edition::replace('Anniversary Edition','ᴀɴɴɪᴠᴇʀsᴀʀʏ ᴇᴅɪᴛɪᴏɴ')::replace('Ultimate Edition','ᴜʟᴛɪᴍᴀᴛᴇ ᴇᴅɪᴛɪᴏɴ')::replace('Director's Cut','ᴅɪʀᴇᴄᴛᴏʀ's ᴄᴜᴛ')::replace('Extended Edition','ᴇxᴛᴇɴᴅᴇᴅ ᴇᴅɪᴛɪᴏɴ')::replace('Collector's Edition','ᴄᴏʟʟᴇᴄᴛᴏʀ's ᴇᴅɪᴛɪᴏɴ')::replace('Theatrical','ᴛʜᴇᴀᴛʀɪᴄᴀʟ ᴄᴜᴛ')::replace('Uncut','ᴜɴᴄᴜᴛ')::replace('IMAX','ɪᴍᴀx')::replace('Diamond Edition','ᴅɪᴀᴍᴏɴᴅ ᴇᴅɪᴛɪᴏɴ')::replace('Remastered','ʀᴇᴍᴀsᴛᴇʀᴇᴅ')}.\"||\"\"]}{stream.message::~Download[\"{tools.removeLine}\"||\"\"]}{service.cached::istrue::and::stream.message::~Download::istrue[\"\\n⭳ DL Stream\"||\"\"]}{stream.message::~⚙️[\"{tools.removeLine}\"||\"\"]}{stream.message::~⚙️::istrue[\"\\n➤ Play Stream\"||\"\"]}"
       }
     },
     "preferredQualities": [
@@ -44,7 +44,8 @@
     "excludedVisualTags": [
       "3D",
       "H-OU",
-      "H-SBS"
+      "H-SBS",
+      "AI"
     ],
     "sortCriteria": {
       "global": [
@@ -56,6 +57,10 @@
       "series": [],
       "anime": [],
       "cached": [
+        {
+          "key": "seadex",
+          "direction": "desc"
+        },
         {
           "key": "library",
           "direction": "desc"
@@ -103,6 +108,10 @@
       ],
       "uncached": [
         {
+          "key": "seadex",
+          "direction": "desc"
+        },
+        {
           "key": "library",
           "direction": "desc"
         },
@@ -115,11 +124,11 @@
           "direction": "desc"
         },
         {
-          "key": "regexPatterns",
+          "key": "streamExpressionMatched",
           "direction": "desc"
         },
         {
-          "key": "streamExpressionMatched",
+          "key": "regexPatterns",
           "direction": "desc"
         },
         {
@@ -139,6 +148,10 @@
           "direction": "desc"
         },
         {
+          "key": "audioTag",
+          "direction": "desc"
+        },
+        {
           "key": "size",
           "direction": "desc"
         }
@@ -147,6 +160,7 @@
     },
     "deduplicator": {
       "enabled": true,
+      "excludeAddons": [],
       "multiGroupBehaviour": "aggressive",
       "keys": [
         "filename",
@@ -185,10 +199,7 @@
       "DV",
       "HDR",
       "10bit",
-      "IMAX",
-      "AI",
-      "SDR",
-      "Unknown"
+      "IMAX"
     ],
     "excludedAudioTags": [],
     "includedAudioTags": [],
@@ -206,8 +217,8 @@
     "includedStreamTypes": [],
     "requiredStreamTypes": [],
     "preferredStreamTypes": [
-      "usenet",
-      "debrid"
+      "debrid",
+      "usenet"
     ],
     "excludedEncodes": [],
     "includedEncodes": [],
@@ -248,28 +259,33 @@
     "excludeUncached": false,
     "excludeUncachedFromAddons": [],
     "excludeUncachedFromServices": [],
-    "excludeUncachedFromStreamTypes": [],
+    "excludeUncachedFromStreamTypes": [
+      "debrid"
+    ],
     "excludeUncachedMode": "or",
     "excludedStreamExpressions": [
+      "/*Optional Placeholder*/ []",
+      "/*Optional Placeholder*/ []",
+      "/*Optional Placeholder*/ []",
       "/*Seeders Filter (Uncached)*/ count(type(streams,'debrid','usenet')) > 0?  ( count(seeders(type(uncached(streams),'debrid'), 5)) < 5 ? [] :  merge(count(regexMatched(streams)) > 0 ? seeders(merge(regexMatched(negate(uncached(type(streams,'usenet')), uncached(streams)),'','Bad'), type(streams,'p2p')),0,5) : seeders(merge(negate(uncached(type(streams,'usenet')), uncached(streams)), type(streams,'p2p')),0,5) ) ): []",
       "/*Seeders Filter (P2P)*/\t count(seeders(type(streams,'p2p'), 5)) < 5 ? [] :  count(seeders(type(streams,'p2p'), 50)) > 20? seeders(type(streams,'p2p'), 0,50) : count(seeders(type(streams,'p2p'),25)) > 20? seeders(type(streams,'p2p'), 0,25) : count(seeders(type(streams,'p2p'), 10)) > 20? seeders(type(streams,'p2p'),0,10) : count(seeders(type(streams,'p2p'), 1)) > 20? seeders(type(streams,'p2p'), 0,1) : []",
-      "/*Anime Filter (4K & AI)*/ merge(queryType == 'anime.series' or queryType == 'anime.movie' ? negate(library(streams), visualTag(streams, 'AI')) : [], queryType == 'anime.series' and count(quality(resolution(streams, '2160p'), 'Bluray REMUX')) >0 ? [] : queryType == 'anime.series' ? negate(library(streams), resolution(streams, '2160p')) : [])",
-      "/*\"Bad\" Regex Filter*/ count(negate(regexMatched(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'Bad'),regexMatched(negate(library(streams),merge(cached(streams),type(streams,'p2p','http')))))) >15? regexMatched(negate(library(streams),streams),'Bad'):[]",
+      "/*Anime Filter*/ merge(queryType == 'anime.series' or queryType == 'anime.movie' ? negate(merge(library(streams), seadex(streams)), visualTag(streams, 'AI')) : [], queryType == 'anime.series' and count(quality(resolution(streams, '2160p'), 'Bluray REMUX')) >0 ? [] : queryType == 'anime.series' ? negate(merge(library(streams), seadex(streams)), resolution(streams, '2160p')) : [], count(seadex(streams, 'best')) > 1 or count(negate(seadex(streams, 'best'), seadex(streams))) > 1 ? merge(slice(negate(seadex(streams, 'best'), seadex(streams)), 1), slice(seadex(streams, 'best'), 1)) : [])",
+      "/*KissKH Filter*/ count(addon(message(streams,'includes','⚙️'),'StreamAsia')) > 0 ? negate(addon(message(streams,'includes','⚙️'),'StreamAsia'),addon(streams,'StreamAsia')) : []",
+      "/*Bad NZB Filter*/ merge(releaseGroup(type(streams,'usenet', 'stremio-usenet'),'sample'), resolution(size(type(streams, 'usenet','stremio-usenet'), 0, queryType == 'movie' ? '400MB':'200MB'), '2160p', '1440p'), size(type(streams, 'usenet','stremio-usenet'), 0, queryType == 'movie' ? '200MB':'100MB'),  message(type(streams,'usenet', 'stremio-usenet'),'includes','🚫'))",
+      "/*\"Bad\" Regex Filter*/ count(negate(regexMatched(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'Bad'),regexMatched(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http')))))) >10? regexMatched(negate(merge(library(streams), seadex(streams)),streams),'Bad'):[]",
       "/*Cached Filter (High Quality)*/ merge( slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray REMUX'),'2160p','1440p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray REMUX'),'1080p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray REMUX'),'720p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray REMUX'),'576p','480p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray REMUX'),'Unknown'), 3),  slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray'),'2160p','1440p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray'),'1080p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray'),'720p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray'),'576p','480p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Bluray'),'Unknown'), 3),  slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEB-DL'),'2160p','1440p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEB-DL'),'1080p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEB-DL'),'720p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEB-DL'),'576p','480p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEB-DL'),'Unknown'), 3),  slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEBRip'),'2160p','1440p'), 3),  slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEBRip'),'1080p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEBRip'),'720p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEBRip'),'576p','480p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'WEBRip'),'Unknown'), 3) )",
       "/*Cached Filter (Low Quality)*/ merge( slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'HDRip','HC HD-Rip','DVDRip','HDTV'),'2160p','1440p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'HDRip','HC HD-Rip','DVDRip','HDTV'),'1080p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'HDRip','HC HD-Rip','DVDRip','HDTV'),'720p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'HDRip','HC HD-Rip','DVDRip','HDTV'),'576p','480p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'HDRip','HC HD-Rip','DVDRip','HDTV'),'Unknown'), 3),  slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'CAM','TS','TC','SCR'),'2160p','1440p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'CAM','TS','TC','SCR'),'1080p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'CAM','TS','TC','SCR'),'720p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'CAM','TS','TC','SCR'),'576p','480p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'CAM','TS','TC','SCR'),'Unknown'), 3),  slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Unknown'),'2160p','1440p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Unknown'),'1080p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Unknown'),'720p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Unknown'),'576p','480p'), 3), slice(resolution(quality(negate(library(streams), merge(cached(streams), type(streams,'p2p','http'))),'Unknown'),'Unknown'), 3) )",
       "/*Uncached Filter (All Quality)*/ merge( slice(resolution(quality(uncached(streams),'Bluray REMUX'),'2160p','1440p'), 3), slice(resolution(quality(uncached(streams),'Bluray REMUX'),'1080p'), 3), slice(resolution(quality(uncached(streams),'Bluray REMUX'),'720p'), 3), slice(resolution(quality(uncached(streams),'Bluray REMUX'),'576p','480p'), 3), slice(resolution(quality(uncached(streams),'Bluray REMUX'),'Unknown'), 3),  slice(resolution(quality(uncached(streams),'Bluray'),'2160p'), 3),  slice(resolution(quality(uncached(streams),'Bluray'),'1080p'), 3), slice(resolution(quality(uncached(streams),'Bluray'),'720p'), 3), slice(resolution(quality(uncached(streams),'Bluray'),'576p','480p'), 3), slice(resolution(quality(uncached(streams),'Bluray'),'Unknown'), 3),  slice(resolution(quality(uncached(streams),'WEB-DL'),'2160p','1440p'), 3), slice(resolution(quality(uncached(streams),'WEB-DL'),'1080p'), 3), slice(resolution(quality(uncached(streams),'WEB-DL'),'720p'), 3), slice(resolution(quality(uncached(streams),'WEB-DL'),'576p','480p','360p'), 3), slice(resolution(quality(uncached(streams),'WEB-DL'),'Unknown'), 3),  slice(resolution(quality(uncached(streams),'WEBRip'),'2160p','1440p'), 3), slice(resolution(quality(uncached(streams),'WEBRip'),'1080p'), 3), slice(resolution(quality(uncached(streams),'WEBRip'),'720p'), 3), slice(resolution(quality(uncached(streams),'WEBRip'),'576p','480p','360p'), 3), slice(resolution(quality(uncached(streams),'WEBRip'),'Unknown'), 3),  slice(resolution(quality(uncached(streams),'HDRip','HC HD-Rip','DVDRip','HDTV'),'2160p','1440p'), 3), slice(resolution(quality(uncached(streams),'HDRip','HC HD-Rip','DVDRip','HDTV'),'1080p'), 3), slice(resolution(quality(uncached(streams),'HDRip','HC HD-Rip','DVDRip','HDTV'),'720p'), 3), slice(resolution(quality(uncached(streams),'HDRip','HC HD-Rip','DVDRip','HDTV'),'576p','480p','360p','240p','144p'), 3), slice(resolution(quality(uncached(streams),'HDRip','HC HD-Rip','DVDRip','HDTV'),'Unknown'), 3),  slice(resolution(quality(uncached(streams),'CAM','TS','TC','SCR'),'2160p','1440p'), 3), slice(resolution(quality(uncached(streams),'CAM','TS','TC','SCR'),'1080p'), 3), slice(resolution(quality(uncached(streams),'CAM','TS','TC','SCR'),'720p'), 3), slice(resolution(quality(uncached(streams),'CAM','TS','TC','SCR'),'576p','480p','360p','240p','144p'), 3), slice(resolution(quality(uncached(streams),'CAM','TS','TC','SCR'),'Unknown'), 3),  slice(resolution(quality(uncached(streams),'Unknown'),'2160p','1440p'), 3), slice(resolution(quality(uncached(streams),'Unknown'),'1080p'), 3), slice(resolution(quality(uncached(streams),'Unknown'),'720p'), 3), slice(resolution(quality(uncached(streams),'Unknown'),'576p','480p','360p','240p','144p'), 3), slice(resolution(quality(uncached(streams),'Unknown'),'Unknown'), 3) )",
-      "/*Final Filter (Low Quality & Resolution)*/ merge(count(quality(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'Bluray REMUX','Bluray','WEB-DL','WEBRip')) >12? quality(negate(library(streams),streams),'HDRip','HC HD-Rip','DVDRip','HDTV','CAM','TS','TC','SCR'):  count(quality(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'Bluray REMUX','Bluray','WEB-DL','WEBRip','HDRip','HC HD-Rip','DVDRip','HDTV')) >12? quality(streams,'CAM','TS','TC','SCR'):[],  count(resolution(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p')) >15? negate(library(streams), merge(type(uncached(streams),'debrid'), resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'720p','576p','480p','360p','240p','144p','Unknown'))):  count(resolution(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p')) >12? negate(library(streams), merge(type(uncached(streams),'debrid'), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'720p','576p','480p','360p','240p','144p','Unknown'),3))):  count(resolution(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >12? negate(library(streams), merge(type(uncached(streams),'debrid'), resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'))):  count(resolution(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >9? negate(library(streams), merge(type(uncached(streams),'debrid'), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'), 3))):  count(resolution(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >6? negate(library(streams), merge(type(uncached(streams),'debrid'), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'), 6))):  count(resolution(negate(library(streams),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >3? negate(library(streams), merge(slice(type(uncached(streams),'debrid'), 6), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'), -1))):[] )"
+      "/*Final Filter (Low Quality & Resolution)*/ merge(count(quality(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'Bluray REMUX','Bluray','WEB-DL','WEBRip')) >12? quality(negate(merge(library(streams), seadex(streams)),streams),'HDRip','HC HD-Rip','DVDRip','HDTV','CAM','TS','TC','SCR'):  count(quality(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'Bluray REMUX','Bluray','WEB-DL','WEBRip','HDRip','HC HD-Rip','DVDRip','HDTV')) >12? quality(streams,'CAM','TS','TC','SCR'):[],  count(resolution(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p')) >15? negate(merge(library(streams), seadex(streams)), merge(type(uncached(streams),'debrid'), resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'720p','576p','480p','360p','240p','144p','Unknown'))):  count(resolution(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p')) >12? negate(merge(library(streams), seadex(streams)), merge(type(uncached(streams),'debrid'), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'720p','576p','480p','360p','240p','144p','Unknown'),3))):  count(resolution(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >12? negate(merge(library(streams), seadex(streams)), merge(type(uncached(streams),'debrid'), resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'))):  count(resolution(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >9? negate(merge(library(streams), seadex(streams)), merge(type(uncached(streams),'debrid'), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'), 3))):  count(resolution(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >6? negate(merge(library(streams), seadex(streams)), merge(type(uncached(streams),'debrid'), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'), 6))):  count(resolution(negate(merge(library(streams), seadex(streams)),merge(cached(streams),type(streams,'p2p','http'))),'2160p','1440p','1080p','720p')) >3? negate(merge(library(streams), seadex(streams)), merge(slice(type(uncached(streams),'debrid'), 6), slice(resolution(merge(type(streams, 'usenet','http','p2p'), type(cached(streams), 'debrid')),'576p','480p','360p','240p','144p','Unknown'), -1))):[] )"
     ],
     "requiredStreamExpressions": [],
     "preferredStreamExpressions": [
-      "cached(merge(service(streams, 'torbox','easynews'), type(streams, 'debrid')))",
-      "merge(cached(service(streams, 'nzbdav', 'altmount')), type(streams, 'http', 'p2p'))",
+      "cached(service(streams, 'torbox'), type(streams, 'debrid'), message(type(streams,'usenet', 'stremio-usenet'),'includes','✅', '🧝'))",
+      "merge(cached(service(streams, 'nzbdav', 'altmount', 'easynews')), type(streams, 'http', 'p2p', 'stremio-usenet'))",
       "uncached(type(streams, 'usenet'))",
       "uncached(type(streams, 'debrid'))"
     ],
     "includedStreamExpressions": [],
-    "rpdbApiKey": "<template_placeholder>",
-    "rpdbUseRedirectApi": true,
     "resultLimits": {},
     "size": {
       "global": {
@@ -292,9 +308,7 @@
       }
     },
     "hideErrors": true,
-    "hideErrorsForResources": [
-      "stream"
-    ],
+    "hideErrorsForResources": [],
     "statistics": {
       "enabled": false,
       "position": "bottom",
@@ -305,10 +319,10 @@
     },
     "tmdbAccessToken": "<template_placeholder>",
     "tmdbApiKey": "<template_placeholder>",
-    "tvdbApiKey": "<template_placeholder>",
     "yearMatching": {
       "enabled": true,
       "tolerance": 1,
+      "strict": true,
       "requestTypes": [
         "movie",
         "series",
@@ -329,25 +343,25 @@
     },
     "seasonEpisodeMatching": {
       "enabled": true,
+      "strict": true,
       "requestTypes": [
         "movie",
         "series",
         "anime"
       ],
-      "addons": [],
-      "strict": true
+      "addons": []
     },
     "autoPlay": {
       "attributes": [
         "resolution",
         "quality",
-        "languages"
+        "releaseGroup"
       ]
     },
     "areYouStillThere": {
       "enabled": false
     },
-    "precacheNextEpisode": true,
+    "precacheNextEpisode": false,
     "alwaysPrecache": false,
     "externalDownloads": false,
     "cacheAndPlay": {
@@ -355,6 +369,8 @@
       "streamTypes": [
         "usenet"
       ]
-    }
+    },
+    "enableSeadex": true,
+    "addonLogo": "https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/blob/main/logo.png?raw=true"
   }
 }
