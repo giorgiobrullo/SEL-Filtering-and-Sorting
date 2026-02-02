@@ -543,6 +543,10 @@ These are setup configs to use with AIOMetadata. It is a powerful tool for all t
 ## ✨ Release Notes
 
 <details>
+<summary>Februrary 2, 2026 (v1.2.3):</summary> 
+<p></p>
+
+<details>
 <summary>December 7, 2025 (v1.2.1):</summary> 
 <p></p>
   
