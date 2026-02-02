@@ -21,18 +21,92 @@ Lastly, please do note my AIOStreams template *does not* include any catalogs. T
 
 ---
 ## ✨ Release Notes
+
+February 2, 2026: What's new in template v1.4.0!
+- Addons adjusted slightly: Default urls, SeaDex addon prioritized, optional Torbox/Debridio.
+- Filtering further improved: New recent features such as passthrough, bitrate and math in SEL got incorporated into old and new SELs alike. 
+- Formatter upgraded: Bitrate display, shorter titles, everything tweaked for a cleaner than ever look.
+- Sort Order updated: Stream Expression Score added replacing Regex Patterns from before.
+- Full list of Optional SELs (more to come) are found [here](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/edit/main/README.md#-optional-sels).
+<details>
+  <summary>v1.4.0</summary>
+  <p></p>
+	
+**Addons** 
+- Current Addons
+  - Debrid Template: STore, TB Search (new, optional), SeaDex (new), Debridio (new, optional), STorz, Comet, MediaFusion, Knaben, AnimeTosho, Torrentio.
+  - P2P Template: Comet, STorz, MediaFusion, Torrentio, TorrentsDB, Peerflix, Nuvio Anime, Nuvio Streams, WebStreamr.  
+- Changes:
+  - Timeout reduced to 7000 ms for all addons (from 7500 ms).
+  - Default empty base urls. Will use whichever default your AIOS hosters decide. Select to change base url as needed.  
+  - STorz switched back to Munif's addon instead of Torznab addon so base url field can be left empty.
+  - SeaDex newly added for Debrid template and prioritized highly in the order.  
+  - New optional addons like Torbox Search (torrent), Newznab Torbox Search (usenet) and Debridio
+  
+**Filters**  
+- New bitrate filter (adapted by G from [TRaSH guide](https://trash-guides.info/Radarr/Radarr-Quality-Settings-File-Size/#standard)) removes low bitrate streams based on queryType detection and quality/resolution thresholds (e.g., 4K WEB-DL >4.6Mbps).  
+- New exclusions for keywords "r00", "iso" in excludedKeywords.  
+- Digital Release Filter enabled for all query types.  
+- Preferred Languages updated: "Original" added after English. Japan and Korean now removed as "Original" takes their place.  
+
+**Formatter**  
+- Title truncated to 15 chars (from 20). Date is now off for tv series, allows full visibility of ep/season detail in first line. 
+- Season/Episode formatting improved: replaces E/S with lowercase, numbers 0-9.
+- Added bitrate display (Mbps/Kbps) when available.
+- Indexer names truncated to 13 chars for usenet. 
+- New feat ::smallcaps now simplified formatter cutting character count by over 1/3: numbers 0-9 instead of detailed labels (e.g., Anime BD T1 → 1).  
+- Although uSmallLanguageCodes is used, `Original` language will turn into corresponding language marked visible under this formatter (eg., ꜰʀ still appear on a French movie even tho French wasn't in language filter).
+
+**SEL**  
+- Excluded Stream Expressions 
+  - New filters: Low bitrate adapted from G, ongoingSeasonPack (hides ongoing season packs), pre-Digital (hides CAM/TS/TC/SCR for new movies).  
+  - Improved Seeders filter using q1/q2/percentile for P2P/uncached debrid (more statistical).  
+  - Anime filter refined to remove unnecessary 4k and extra seadex results.  
+  - New "Movie 4k" filter: removes all 4k except 4K WEB-DL if certain conditions are met, like presence of 1080p REMUX with no corresponding 4k REMUX.  
+  - Bad NZBs filter updated.  
+  - Cached/uncached slices remain at 3 per category for Standard 3 per category for Extended.
+    
+**Preferred/Included Stream Expressions**  
+- Advanced tiered stream types (Tier 1: cached lib/SeaDex/debrid/torbox usenet; Tier 2: cached nzbdav/http/p2p; Tier 3: uncached usenet; Tier 4: uncached debrid).
+  - This is used to sort results, prioritizing various type of cached streams according to its reliability, using Stream Expression Matched in Sort Order.
+  - Now incorporated the fix mentioned   
+- New: SeaDex passthrough, Library exemption, digitalRelease, 0Cached title passthrough.  
+
+**Ranked Stream Expressions**
+ - Imported from Vidhin's Public regex template, which also comes with corresponding Preferred Regex Patterns for release groups as before. See [his github ](https://github.com/Vidhin05/Releases-Regex)for more detail.
+
+**Sorting**  
+ - Current Sort Order  
+   - Global: Cached.  
+   - Cached: SeaDex → Library → Resolution → Quality → Stream Expression Matched → **Stream Expression Score (new)** → Language → Visual Tags → Encode → Audio Tag → Size → Seeders.  
+   - Uncached: Similar, with Seeders before Language.  
+ - Changes:  
+   - Added "streamExpressionScore" after Stream Expression Matched (ranks regex tiers numerically, e.g., Remux T1=1950, Bad=-10000).  
+   - Regex patterns updated with scores for anime/non-anime.  
+
+**Miscellaneous**  
+- digitalReleaseFilter enabled for series.
+- TVDB API now back to mandatory during template onboarding, as various AIOS requires it for better accuracy.
+- Descriptions updated across templates to reflect v1.4.0, new features.
+- Standalone SEL Only template will now have Excluded, Included and Preferred Stream Expressions.
+- Sharing more Optional SELs on [Github](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/edit/main/README.md#-optional-sels) to further customize your filtering.
+
+See v1.3.1 for unchanged items.
+
+</details>
+
+<details>
+  <summary>v1.3.0</summary>
+  <p></p>
+
 December, 24,  2025
 What's new in template v1.3.0!
 - Addons tuned: Default fetching, 7500 ms timeout.,
 - Filters refined: AI tag excluded, SeaDex integrated.,
 - Formatter upgraded: Best/Alt release tags, NZB health checks, cleaner layout.,
 - SEL improved: New Optional SELs for NZB/DV/Travel filters, easier customization.,
-- Sorting updated: SeaDex now top priority.
+- Sorting updated: SeaDex now top priority.	
 
-<details>
-  <summary>v1.3.0</summary>
-  <p></p>
-	
 December 24, 2025: v1.3.0
 
 __Addons__
@@ -281,7 +355,7 @@ These are setup templates to use with AIOStreams. If you're not sure which AIOSt
 | **Without Addons** | Keeps your existing add-ons while applying the complete setup config. |
 | **Without Addons & Formatter** | Applies the complete set up but keeps both your add-ons and formatter untouched. |
 | **Complete Setup for P2P** | Complete setup, with p2p/http addons and sort order tailored for those without debrid service |
-| **Standard SEL Only** | Imports only the Excluded Stream Expressions used in the Complete Setup. | 
+| **Standard SEL Only** | Imports only the Excluded, Included & Preferred Stream Expressions used in the Complete Setup. | 
 | **Extended SEL Only** | Imports the modified SEL that gives slightly more results than Standard SEL. | 
 | **Formatter Only** | Imports only the custom formatter used in the template for stream display. |
 
@@ -301,12 +375,71 @@ https://raw.githubusercontent.com/Tam-Taro/SEL-Filtering-and-Sorting/refs/heads/
 
   > [!NOTE]
   > Remember to personalize your imported config by going to `Filters` -> `Language`. Select your main language as the top spot in Preferred Languages, then sort/rank the rest according to your preference. I suggest keeping Dubbed, Dual Audio, Multi, Unknown in the list as they may contain streams of your preferred languages.
-> To further enhance your sorting and filtering, I highly recommend importing Vidhin's regex which tags streams based on the quality of the release group.
+> To further enhance your sorting and filtering, Vidhin's regex template is now incorporated, which tags and ranks streams based on the quality of the release group.
 
-> How to Import Vidhin's regex template: About -> Template Wizard -> Import Template. Paste the template URL: ```https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-regexes-template.json```. Click go, and then load the template.
+> How to Import new updates of Vidhin's regex template: About -> Template Wizard -> Import Template. Paste the template URL: ```https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-regexes-template.json```. Click go, and then load the template.
 > 
 > This regex labels all streams with tier rankings based on reputation/quality of release groups per TRaSH Guides. You will need to reimport the regex template occassionally whenever Vidhin pushes an update to the regex because many AIOStreams instances will only allow the use of his latest update regex.
 
+## 🔧 Optional SELs
+
+While my SEL setup is a complete setup, it can always be tweaked further for various specific needs. Over the months I've shared these SELs with you guys on Discord, or found them useful, shared by others. Most of these are Excluded Stream Expressions, which you can either put *before* or *after* all my ESEs. Where to put them is important and will be noted.
+
+These go into Excluded *before* all my Excluded SELs, in one of the empty placeholders on top:
+  - __☑ ɴᴢʙ-Only Filter__: A UsenetStreamer filter for those that only want to see health checked results from UsenetStreamer. The SEL line assumes your UsenetStreamer addon is named US, USN, UsenetStreamer, or Usenet Streamer, so avoid naming any other addon with those names.
+	- ```text
+  	  /*☑ ɴᴢʙ-Only Filter*/ negate(addon(message(streams,'includes','✅','🧝'),'US','UNS','Usenet Streamer','UsenetStreamer'),addon(streams,'US','UNS','Usenet Streamer','UsenetStreamer'))```
+  - __DV-Only Non-Remux Filter__: remove some DV Only streams that give playback issues (purple screen) on some devices. I use this one as my pc doesn't render DV Profile 5 files very well (particularly from Apple TV Web-DLs)
+    - ```text
+      /*DV Only Non-Remux Filter*/ negate(quality(streams,'BluRay REMUX'), visualTag(streams,'DV Only'))```
+  - __TorBox Download Limit__: TB Essential and Standard have a max uncached download size of 200GB, which is increased to 1TB for TB Pro. Use the appropriate SEL if you're with TB.
+    - ```text
+      /*TB Non-Pro Download Limit*/ size(uncached(streams), '200GB')
+    - ```text
+      /*TB Pro Download Limit*/ size(uncached(streams), '1TB')
+  - __Bitrate Hardcap for Mobile__: Unlike the one below, where if no results for 4k or 1080p at bitrate cap, it fallbacks to show higher bitrate anyway. This SEL however will set a hardcap based on your mobile internet connection. Will assume 4-5G mobile: 4K @ 8Mbps, 1080p @ 3Mbps, 720p or lower @ 2Mbps
+    - ```text
+      /*Bitrate Hardcap*/
+		merge(bitrate(resolution(streams, '2160p'), '8Mbps'),
+		  bitrate(resolution(streams, '1440p', '1080p'), '3Mbps'),
+		  bitrate(resolution(streams, '720p','576p', '480p', '360p', '240p', 'Unknown'),'2Mbps'))
+  - __Bitrate Softcap for Travel__: A bitrate filter for a bandwidth conscious setup. It's a smart bitrate filter that gets applied only if there are >5 results found within each bitrate range, which dynamically increases (to the max bitrate available) until >5 results are found for that resolution. The bitrate range was chosen somewhat arbitrarily, with a mindset of not chasing for best quality but for best bandwidth/quality in practice. This is not a flat hard cap on bitrate, since I like to still see results than no results at all even if they're too big to watch on mobile.
+     - <details>
+       <summary>Bitrate softcap for Travel</summary>
+                         
+            /*Bitrate softcap*/ 
+			merge(
+			 bitrate(cached(resolution(streams, '2160p')),
+			    count(bitrate(cached(resolution(streams, '2160p')), 1, '6Mbps')) > 5 ?  '6Mbps' :
+			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '9Mbps'))) > 5 ? '9Mbps':
+			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '12Mbps'))) > 5 ? '12Mbps': 
+			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '15Mbps'))) > 5 ? '15Mbps': 
+			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '20Mbps'))) > 5 ? '20Mbps': 
+			    max(values(cached(resolution(streams, '2160p')), 'bitrate'))),
+			 bitrate(cached(resolution(streams, '1440p', '1080p')),
+			    count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '6Mbps')) > 5 ?  '6Mbps' :
+			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '9Mbps'))) > 5 ? '9Mbps':
+			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '12Mbps'))) > 5 ? '12Mbps': 
+			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '15Mbps'))) > 5 ? '15Mbps': 
+			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '20Mbps'))) > 5 ? '20Mbps': 
+			    max(values(cached(resolution(streams, '1440p', '1080p')), 'bitrate'))),
+			 bitrate(cached(resolution(streams, '720p')),
+			    count(bitrate(cached(resolution(streams, '720p')), 1, '6Mbps')) > 5 ?  '6Mbps' :
+			    (count(bitrate(cached(resolution(streams, '720p')), 1, '9Mbps'))) > 5 ? '9Mbps':
+			    (count(bitrate(cached(resolution(streams, '720p')), 1, '12Mbps'))) > 5 ? '12Mbps': 
+			    (count(bitrate(cached(resolution(streams, '720p')), 1, '15Mbps'))) > 5 ? '15Mbps': 
+			    (count(bitrate(cached(resolution(streams, '720p')), 1, '20Mbps'))) > 5 ? '20Mbps': 
+			    max(values(cached(resolution(streams, '720p')), 'bitrate'))))
+</details>
+
+These go into Excluded *after* all my Excluded SELs:
+  - __Global Result Limit__: After all my filtering SELs have ran you get left off with 3 of each category, totalling about 20 streams in all. You can simply cut this number down to any number you want, I will go with 6 to get even amount from 2 categories (eg. 3 x 4k Remux + 3 x 4k Bluray). Library and Seadex results are not counted.
+    - ```text
+      /*Global Result Limit: 6*/slice(negate(merge(library(streams), cached(seadex(streams))), streams), 6)
+These go into Included Stream Expressions:
+  - __Language Passthrough__: If you want want some amount of your results in another language to always show up, skipping all filters, then this is the SEL for you. Change `yourLanguage` to whatever your language you want to see 5 streams of, these streams will bypass title matching & our excluded SELs. Make multiple of these SELs for another language passthrough if desired. Can adjust the number from 5 to whatever you want. If you still don't see your language in results, it's most likely because your addons didn't return any.
+    - ```text
+      /*yourLanguage*/ passthrough(slice(language(cached(streams), 'yourLanguage'), 0, 5), 'title', 'excluded')
 ### 🧩 Manual Setup of Template v1.1.0 (Outdated )
 
 <details>
