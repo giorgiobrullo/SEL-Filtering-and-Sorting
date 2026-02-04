@@ -347,7 +347,7 @@ Nov 18, 2025: What's new in template v1.2.0
 
 ## ⚙️ Templates Included for AIOStreams
 
-These are setup templates to use with AIOStreams. If you're not sure which AIOStreams instance to start with, check out the list of trusted public instances [here](https://status.dinsden.top/status/stremio-addons). I recommend nightly AIOStreams from Midnight, Yeb, Viren, or Kuu. Make sure they have working Torrentio add-on. If not, switch to a different instance.
+These are setup templates to use with AIOStreams. If you're not sure which AIOStreams instance to start with, check out the list of trusted public instances [here](https://status.dinsden.top/status/stremio-addons). I recommend *nightly* AIOStreams from Midnight, Yeb, Viren, or Kuu. My setup is fine-tuned and tested on latest nightly, so you don't have to worry about features not working. Make sure the instance you chose have a working Torrentio add-on. If not, switch to a different instance.
 
 | Template | Description |
 |-----------|--------------|
@@ -371,7 +371,8 @@ https://raw.githubusercontent.com/Tam-Taro/SEL-Filtering-and-Sorting/refs/heads/
 5. Select one of the templates as you wish to use. I recommend to start with "Complete SEL Setup" as it has the most of my configs shared here.
 6. Follow the prompt to configure your debrid credentials (optional if you chose the P2P template). API Keys already configured inside AIOStreams will be prefilled.
 7. Enter your TMDB/TVDB credentials for Title Matching and various other features.
-8. Load Template, Save your AIOStreams and enjoy!
+8. Load Template, Save your AIOStreams, install into stremio.
+9. Go to end of this page for instructions on how to setup your catalogs via AIOMetadata addon (which is a separate addon from AIOStrems).
 
   > [!NOTE]
   > Remember to personalize your imported config by going to `Filters` -> `Language`. Select your main language as the top spot in Preferred Languages, then sort/rank the rest according to your preference. I suggest keeping Dubbed, Dual Audio, Multi, Unknown in the list as they may contain streams of your preferred languages.
