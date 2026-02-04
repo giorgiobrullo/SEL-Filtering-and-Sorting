@@ -5,7 +5,7 @@
     "description": "This template will import only the formatter used in my SEL setup, nothing else will be affected. The formatter is minimal and clean, without flashy coloured emojis, while comprehensive enough to display all necessary information for stream selection. Intended to complement my SEL setup, with emphasis on resolution, stream type and quality front and center in the title section. Smartly switches icons for cached (⚡/⏳), proxied (⛊/⛉), library (☁︎/▤), and season packs (⧉/◧). Only when available, the last line in small caps font will show your preferred languages, Usenet's health status (eg., ☑ ɴᴢʙ), SeaDex status (ᴀʟᴛ/ʙᴇsᴛ ʀᴇʟᴇᴀsᴇ), Vidhin's regex tiers (eg., ʀᴇᴍᴜx ᴛ𝟷), networks (egs., ɴᴇᴛғʟɪx), editions (eg., ᴅɪʀᴇᴄᴛᴏʀ's ᴄᴜᴛ), and special attributes like ʀᴇᴘᴀᴄᴋᴇᴅ, ᴜɴᴄᴇɴsᴏʀᴇᴅ, and ᴜɴʀᴀᴛᴇᴅ.",
     "source": "external",
     "author": "Tamtaro",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "category": "Formatter",
     "serviceRequired": false
   },
