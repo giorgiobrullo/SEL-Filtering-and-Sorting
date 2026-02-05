@@ -1,18 +1,21 @@
 # SEL-Filtering-and-Sorting
-  Since beta of the current v2 AIOStreams, I always wanted the perfect config that would show only the best results, not just for myself, but for my family and friends too. Some prefer lower quality/resolution streams for their lower end TV, while I prefer the latest remuxes. An all-in-one config that I could share. We didn't want to see dozens of results we would never use anyway. This balancing act was finally possible with the release of [Stream Expressions Language (SEL)](https://github.com/Viren070/AIOStreams/wiki/Stream-Expression-Language) capability in AIOStreams.  
 
-  After months of tinkering, always finetuning my setup, testing newest features and bugs, and exchanging numerous tips with you all over at [the AIOStream discord,](https://discord.gg/zRq8dVh5rJ) I will use this space to share some of that with you. You will find a guide to my personal config that I'm happy with and importable templates for AIOStreams, with a heavy focus on SEL as the filtering tool. It is tailored to my preference, but has broadened over time so that most of you should find it as a good starting point, if not the final piece to your stremio puzzle.
+Tired of Stremio pages flooded with streams you'll never use? My **SEL**-driven AIOStreams setup keeps all the good stuff while hiding the clutter. It started as a personal project during the early v2 AIOStreams betas, when I wanted one config I could share with family and friends: mid-resolution options for slower devices, premium remuxes for my own setup, all in a single, smart template.
 
-Consider using my setup template as is if you:
-- Don't want to see too many results, but also don't want to miss out on any high quality streams that may be removed by simple filtering like `Exclude Uncached` or `Result Limits`
-- Want a config that will adjust its filtering strictness based on how many results are found. Dont want those old 480p cartoons filtered out? But don't want to see 720p streams when there are a bunch of 1080p & 4K present already? This setup got you covered. 
-- Have spent hours trying to prioritize certain streams and sort your results to your liking but still not quite happy yet. This is the right place for you, as I can guarantee to have spent more hours on this setup, and it's free, so why not try?
+With [Stream Expression Language (SEL)](https://github.com/Viren070/AIOStreams/wiki/Stream-Expression-Language) in AIOStreams, that "perfect balance" finally became possible. After months of tinkering, testing new features, chasing bugs, and trading tips in the [AIOStreams Discord](https://discord.gg/zRq8dVh5rJ), this guide shares my day-to-day config plus ready-to-import templates focused on SEL filtering and sensible sorting.
+
+## Who this is for
+
+Use this setup as-is, or as a base to tweak for your tastes. It's especially useful if you:
+
+- Want **fewer, higher-quality results** without blunt filters like `Exclude Uncached` or simple `Result Limits`
+- Prefer **dynamic filtering** that tightens when lots of results exist (1080p/4K first) but keeps 480p/720p fallbacks when needed
+- Spent **hours fiddling** with priorities/sort orders and still aren't happy—this is battle-tested so you can import, try, then adjust instead of starting from scratch.
 
 > [!IMPORTANT]
 > 1. My AIOStreams template *does not* include any catalogs. This is because many of us prefer AIOMetadata (separate addon from AIOStreams), so just scroll down to the [AIOMetadata section](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/tree/main?tab=readme-ov-file#%EF%B8%8F-whats-included-for-aiometadata) for all your metadata and catalog management needs.
 >
 > 2. My AIOStreams template is based on latest nightly features of AIOStreams. Most cases I'll be pushing features that are not yet released in stable AIOStreams. For my latest to work, choose a nightly AIOStreams as found on [this page](https://status.dinsden.top/status/stremio-addons). If selfhosting, change your container tag from :latest to :nightly, and do `docker compose up -d --force-recreate --pull always aiostreams`.
-
   <details>
         <summary>PS. I just switched to TorBox on their BF deal, so now I can share my code like everyone else woo!! For the best stremio experience, you need a debrid service, and TB is current top recommendation especially if you're like me, and like to share your stremio setup with family and friends. </summary></summary>
   
@@ -21,6 +24,23 @@ Consider using my setup template as is if you:
     
   </details>
 
+---
+## Quick Setup Overview
+1. Choose an AIOStreams instance from [this page](https://status.dinsden.top/status/stremio-addons). Nightly is **strongly** recommended. 
+    - Selfhosters can switch their AIOStreams from `:latest` tag to `:nightly` & run `docker compose up -d --force-recreate --pull always aiostreams`
+2. [Import templates](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/tree/main?tab=readme-ov-file#-how-to-import): Paste `https://raw.githubusercontent.com/Tam-Taro/SEL-Filtering-and-Sorting/main/Tamtaro-All-Templates-for-AIOStreams.json` into *AIOStreams → Save & Install :floppy_disk: → Import Template*
+    - "Confirm Import" to save all templates into your Template Wizard cache, so you don't need to re-paste the url for template updates. 
+    - Start with "Complete SEL Setup" (Debrid or P2P options) or "SEL Setup without Addons +- Formatter". See all available templates below.
+    - Enter Debrid services (skip for P2P template), TMDB and TVDB credentials 
+    - Load Template, Save your AIOStreams into Stremio.
+3. Personalize AIOStreams: 
+    - Adjust `Preferred Languages` in Filters > Language. 
+    - Enable Torbox (default disabled) or add any addons as desired.
+    - Browse & try [optional SELs](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/edit/main/README.md#-optional-sels).  
+    - Import `Extended SEL Only` Template (included in imported url) if you want more results.
+    - Import `Vidhin's Regexes - Advanced` Template ([see thread](https://discord.com/channels/1225024298490662974/1468792330973872148/1468792330973872148)) if you are using an AIOStreams instance that supports it & want more than the included release group regex & scoring.
+4. [AIOMetadata for catalogs/meta](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/tree/main?tab=readme-ov-file#%EF%B8%8F-whats-included-for-aiometadata): Import one of my JSONs (with/without anime) via trusted AIOMetadata instances from [this page](https://status.dinsden.top/status/stremio-addons). 
+    - Refer to full AIOMetadata guide at end of page.
 ---
 ## ✨ Release Notes
 February 4, 2026: What's new in template v1.4.3!
