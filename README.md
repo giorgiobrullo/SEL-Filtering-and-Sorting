@@ -26,8 +26,7 @@ Use this setup as-is, or as a base to tweak for your tastes. It's especially use
 
 ---
 ## Quick Setup Overview
-1. Choose an AIOStreams instance from [this page](https://status.dinsden.top/status/stremio-addons). Nightly is **strongly** recommended. 
-    - Selfhosters can switch their AIOStreams from `:latest` tag to `:nightly` & run `docker compose up -d --force-recreate --pull always aiostreams`
+1. Choose an AIOStreams instance from [this page](https://status.dinsden.top/status/stremio-addons). Nightly is **strongly** recommended.
 2. [Import templates](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting/tree/main?tab=readme-ov-file#-how-to-import): Paste `https://raw.githubusercontent.com/Tam-Taro/SEL-Filtering-and-Sorting/main/Tamtaro-All-Templates-for-AIOStreams.json` into *AIOStreams → Save & Install :floppy_disk: → Import Template*
     - "Confirm Import" to save all templates into your Template Wizard cache, so you don't need to re-paste the url for template updates. 
     - Start with "Complete SEL Setup" (Debrid or P2P options) or "SEL Setup without Addons +- Formatter". See all available templates below.
