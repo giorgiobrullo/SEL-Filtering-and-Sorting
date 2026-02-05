@@ -27,7 +27,7 @@ February 2, 2026: What's new in template v1.4.0!
 - Filtering further improved: New recent features such as passthrough, bitrate and math in SEL got incorporated into old and new SELs alike. 
 - Formatter upgraded: Bitrate display, shorter titles, everything tweaked for a cleaner than ever look.
 - Sort Order updated: Stream Expression Score added replacing Regex Patterns from before.
-- Full list of Optional SELs (more to come) are found [here](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting#-optional-sels).
+- Full list of Optional SELs (more to come) are found [here](https://github.com/Tam-Taro/SEL-Filtering-and-Sorting?tab=readme-ov-file#-optional-sels).
 <details>
   <summary>v1.4.0</summary>
   <p></p>
