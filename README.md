@@ -468,7 +468,7 @@ These go into Excluded *before* all my Excluded SELs, in one of the empty placeh
   	  /*☑ ɴᴢʙ-Only Filter*/ negate(addon(message(streams,'includes','✅','🧝'),'US','UNS','Usenet Streamer','UsenetStreamer'),addon(streams,'US','UNS','Usenet Streamer','UsenetStreamer'))```
   - __DV-Only Non-Remux Filter__: remove some DV Only streams that give playback issues (purple screen) on some devices. I use this one as my pc doesn't render DV Profile 5 files very well (particularly from Apple TV Web-DLs)
     - ```text
-      /*DV Only Non-Remux Filter*/ negate(quality(streams,'BluRay REMUX'), visualTag(streams,'DV Only'))
+      /*DV Only Non-Remux*/ isAnime?[]:negate(merge(quality(streams,'BluRay REMUX'),releaseGroup(streams, 'Flights'),regexMatched(streams, 'Hulu')),visualTag(streams,'DV Only'))
   - __TorBox Download Limit__: TB Essential and Standard have a max uncached download size of 200GB, which is increased to 1TB for TB Pro. Use the appropriate SEL if you're with TB.
     - ```text
       /*TB Non-Pro Download Limit*/ size(uncached(streams), '200GB')
@@ -484,29 +484,29 @@ These go into Excluded *before* all my Excluded SELs, in one of the empty placeh
      - <details>
        <summary>Bitrate softcap for Travel</summary>
                          
-            /*Bitrate softcap*/ 
-			merge(
-			 bitrate(cached(resolution(streams, '2160p')),
-			    count(bitrate(cached(resolution(streams, '2160p')), 1, '6Mbps')) > 5 ?  '6Mbps' :
-			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '9Mbps'))) > 5 ? '9Mbps':
-			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '12Mbps'))) > 5 ? '12Mbps': 
-			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '15Mbps'))) > 5 ? '15Mbps': 
-			    (count(bitrate(cached(resolution(streams, '2160p')), 1, '20Mbps'))) > 5 ? '20Mbps': 
-			    max(values(cached(resolution(streams, '2160p')), 'bitrate'))),
-			 bitrate(cached(resolution(streams, '1440p', '1080p')),
-			    count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '6Mbps')) > 5 ?  '6Mbps' :
-			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '9Mbps'))) > 5 ? '9Mbps':
-			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '12Mbps'))) > 5 ? '12Mbps': 
-			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '15Mbps'))) > 5 ? '15Mbps': 
-			    (count(bitrate(cached(resolution(streams, '1440p', '1080p')), 1, '20Mbps'))) > 5 ? '20Mbps': 
-			    max(values(cached(resolution(streams, '1440p', '1080p')), 'bitrate'))),
-			 bitrate(cached(resolution(streams, '720p')),
-			    count(bitrate(cached(resolution(streams, '720p')), 1, '6Mbps')) > 5 ?  '6Mbps' :
-			    (count(bitrate(cached(resolution(streams, '720p')), 1, '9Mbps'))) > 5 ? '9Mbps':
-			    (count(bitrate(cached(resolution(streams, '720p')), 1, '12Mbps'))) > 5 ? '12Mbps': 
-			    (count(bitrate(cached(resolution(streams, '720p')), 1, '15Mbps'))) > 5 ? '15Mbps': 
-			    (count(bitrate(cached(resolution(streams, '720p')), 1, '20Mbps'))) > 5 ? '20Mbps': 
-			    max(values(cached(resolution(streams, '720p')), 'bitrate'))))
+			/*Bitrate Softcap*/
+			merge(bitrate(cached(resolution(streams,'2160p')),
+			count(bitrate(cached(resolution(streams,'2160p')),1,'6Mbps'))>5?'6Mbps':
+			count(bitrate(cached(resolution(streams,'2160p')),1,'9Mbps'))>5?'9Mbps':
+			count(bitrate(cached(resolution(streams,'2160p')),1,'12Mbps'))>5?'12Mbps':
+			count(bitrate(cached(resolution(streams,'2160p')),1,'15Mbps'))>5?'15Mbps':
+			count(bitrate(cached(resolution(streams,'2160p')),1,'20Mbps'))>5?'20Mbps':
+			max(values(cached(resolution(streams,'2160p')),'bitrate'))
+			),bitrate(cached(resolution(streams,'1440p','1080p')),
+			count(bitrate(cached(resolution(streams,'1440p','1080p')),1,'6Mbps'))>5?'6Mbps':
+			count(bitrate(cached(resolution(streams,'1440p','1080p')),1,'9Mbps'))>5?'9Mbps':
+			count(bitrate(cached(resolution(streams,'1440p','1080p')),1,'12Mbps'))>5?'12Mbps':
+			count(bitrate(cached(resolution(streams,'1440p','1080p')),1,'15Mbps'))>5?'15Mbps':
+			count(bitrate(cached(resolution(streams,'1440p','1080p')),1,'20Mbps'))>5?'20Mbps':
+			max(values(cached(resolution(streams,'1440p','1080p')),'bitrate'))
+			),bitrate(cached(resolution(streams,'720p')),
+			count(bitrate(cached(resolution(streams,'720p')),1,'6Mbps'))>5?'6Mbps':
+			count(bitrate(cached(resolution(streams,'720p')),1,'9Mbps'))>5?'9Mbps':
+			count(bitrate(cached(resolution(streams,'720p')),1,'12Mbps'))>5?'12Mbps':
+			count(bitrate(cached(resolution(streams,'720p')),1,'15Mbps'))>5?'15Mbps':
+			count(bitrate(cached(resolution(streams,'720p')),1,'20Mbps'))>5?'20Mbps':
+			max(values(cached(resolution(streams,'720p')),'bitrate'))
+			))
 </details>
 
 These go into Excluded *after* all my Excluded SELs:
@@ -514,13 +514,12 @@ These go into Excluded *after* all my Excluded SELs:
     - ```text
       /*Global Result Limit: 6*/slice(negate(merge(library(streams), cached(seadex(streams))), streams), 6)
 These go into Included Stream Expressions, order doesn't matter here:
-  - __Language Passthrough__: If you want some amount of your results in another language to always show up, skipping mostly all filters, then this is the SEL for you. Change `yourLanguage` to whatever your language you want to see 5 streams of, these streams will bypass title matching & our excluded SELs. Make multiple of these SELs for other language passthroughs if desired. Can adjust the number from 5 to whatever you want. If you still don't see your language in results, it's most likely because your addons didn't return any.
+  - __Language Passthrough__: If you want some amount of your results in another language to always show up, skipping mostly all filters, then this is the SEL for you. Change `yourLanguage` to whatever your language you want to see ~ 5 streams of, these streams will bypass title matching & our excluded SELs. We're not bypassing a lot of other filters like deduplication so you may see less than 5. Make multiple of these SELs for other language passthroughs if desired. Can adjust the number from 5 to whatever you want. If you still don't see your language in results, it's most likely because your addons didn't return any.
     - ```text
       /*yourLanguage*/ passthrough(slice(language(cached(streams), 'yourLanguage'), 0, 5), 'title', 'excluded')
   - __DV Passthrough__: This will passthrough all DV streams in 4k/1080p, and if there are less than 5 of such present, it will also passthrough DV streams in 720p. Specifically, my exclusion SELs won't work on these DV streams. 
     - ```text
       /*DV Passthrough*/ count(resolution(visualTag(cached(streams), 'DV'), '2160p', '1080p')) > 5 ? passthrough(resolution(visualTag(cached(streams), 'DV'), '2160p', '1080p'), 'excluded') : passthrough(resolution(visualTag(cached(streams), 'DV'), '2160p', '1080p', '720p'), 'excluded')
-
 
 ### 🧩 Manual Setup of Template v1.1.0 (Outdated )
 
