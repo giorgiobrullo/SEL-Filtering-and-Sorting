@@ -605,6 +605,20 @@ These go into Included Stream Expressions, order doesn't matter here:
     - ```text
       /*SDR Passthrough*/ count(resolution(negate(merge(visualTag(streams, 'HDR', 'HDR10', 'HDR10+', 'DV')), visualTag(merge(cached(streams), type(streams, 'usenet')), 'SDR', 'HLG', '10bit', 'IMAX', 'Unknown')), '2160p', '1080p')) > 5 ? passthrough(slice(resolution(negate(merge(visualTag(streams, 'HDR', 'HDR10', 'HDR10+', 'DV')), visualTag(merge(cached(streams), type(streams, 'usenet')), 'SDR', 'HLG', '10bit', 'IMAX', 'Unknown')), '2160p', '1080p'), 0, 5), 'excluded') : passthrough(slice(resolution(negate(merge(visualTag(streams, 'HDR', 'HDR10', 'HDR10+', 'DV')), visualTag(merge(cached(streams), type(streams, 'usenet')), 'SDR', 'HLG', '10bit', 'IMAX', 'Unknown')), '2160p', '1080p', '720p'), 0, 5), 'excluded')
 
+## Gelato (Jellyfin) Name Template
+
+If you use [Gelato](https://github.com/lostb1t/Gelato) to stream through Jellyfin, it only displays the stream **name** — the description template is not visible. The default formatter puts most useful info in the description, so Gelato streams look bare.
+
+To fix this, go to **Formatter > Custom** and replace the **Name** field with this single-line template that packs all essential info into the name:
+
+```text
+{stream.seadexBest::istrue["🏆 "||""]}{stream.seadex::istrue::and::stream.seadexBest::isfalse["⭐ "||""]}{addon.name::exists["{addon.name} "||""]}{service.cached::istrue["⚡"||"⏳"]}{service.shortName::exists["{service.shortName} "||""]}{stream.resolution::exists::and::stream.title::~anime::isfalse["{stream.resolution::replace('2160p','4K')::replace('1440p','2K')::replace('p','p')} "||""]}{stream.quality::exists["{stream.quality::replace('Bluray Remux','Remux')::replace('Bluray','BD')::replace('Web-Dl','WEB')::title} "||""]}{stream.encode::exists["{stream.encode} "||""]}{stream.visualTags::exists["({stream.visualTags::join('·')}) "||""]}{stream.size::>0["[{stream.size::rbytes}] "||""]}{stream.releaseGroup::exists["{stream.releaseGroup} "||""]}{stream.private::istrue::and::stream.indexer::exists["({stream.indexer}) "||""]}{stream.seeders::>0::and::service.cached::isfalse["👥{stream.seeders} "||""]}{stream.title::exists::and::stream.library::istrue["☁︎"||""]}
+```
+
+**What it shows:** SeaDex badge (🏆/⭐) · addon name · cache status (⚡/⏳) · service · resolution · quality · encode · visual tags (HDR/DV) · size · release group · indexer (private trackers only) · seeders (if P2P) · library icon (☁︎)
+
+You can keep the description template as-is — Stremio users will still benefit from it.
+
 ### 🧩 Manual Setup of Template v1.1.0 (Outdated )
 
 <details>
