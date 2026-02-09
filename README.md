@@ -509,6 +509,10 @@ These go into Excluded *before* all my Excluded SELs, in one of the empty placeh
 			))
 </details>
 
+  - __Private Tracker Filter__: If you use qBittorrent (via StremThru) alongside debrid services, this prevents private tracker torrents from being sent to debrid for download — which would fail or leak your passkey. Cached debrid results are kept (the debrid already has the data). qBittorrent streams are always kept. Requires AIOStreams with `privateTracker()` function support (available in [this fork](https://github.com/giorgiobrullo/AIOStreams)).
+    - ```text
+      /*Private Tracker Filter*/ uncached(negate(service(streams, 'qbittorrent'), type(privateTracker(streams), 'debrid')))
+
 These go into Excluded *after* all my Excluded SELs:
   - __Global Result Limit__: After all my filtering SELs have ran you get left off with 3 of each category, totalling about 20 streams in all. You can simply cut this number down to any number you want, I will go with 6 to get even amount from 2 categories (eg. 3 x 4k Remux + 3 x 4k Bluray). Library and Seadex results are not counted.
     - ```text
